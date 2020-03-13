@@ -8,3 +8,5 @@ res2=`expr "scale=4;$a*$b+$c" | bc -l`
 echo "$a * $b + $c = $res2"
 res3=`expr "scale=4;$c+$a/$b" | bc -l`
 echo "$c + $a / $b = $res3"
+res4=`expr "scale=4;$a%$b+$c" | bc -l`
+echo "$a % $b + $c = $res4"
