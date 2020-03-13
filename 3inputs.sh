@@ -25,3 +25,31 @@ array[2]=${results[3]}
 array[3]=${results[4]}
 echo 'Array: '${array[@]}
 
+
+#for a in "${array[@%.*]}"; do echo "$a"; done | sort
+temp=0
+for((i=0; i<${#array[@]}; i++))
+do
+
+    for((j=i+1; j<${#array[@]}; j++))
+    do
+        #echo "sort test" ${array[i]%.*}
+        if [[ ${array[i]%.*} -gt ${array[j]%.*} ]]
+        then
+            temp=${array[i]}
+            array[i]=${array[j]}
+            array[j]=$temp
+        fi
+    done
+done
+
+#array=($(printf "%s\n" ${array[@]} | sort -r ))
+echo 'Sorted array in ascending order: ' ${array[@]}
+l=0
+for((k=${#array[@]}; k>=0; k--))
+do
+array2[l]=${array[k]}
+((l++))
+done
+echo 'Sorted array in descending order: ' ${array2[@]}
+
