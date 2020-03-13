@@ -10,3 +10,9 @@ res3=`expr "scale=4;$c+$a/$b" | bc -l`
 echo "$c + $a / $b = $res3"
 res4=`expr "scale=4;$a%$b+$c" | bc -l`
 echo "$a % $b + $c = $res4"
+
+results[1]=$res1
+results[2]=$res2
+results[3]=$res3
+results[4]=$res4
+echo ${!results[@]} ' : ' ${results[@]}
